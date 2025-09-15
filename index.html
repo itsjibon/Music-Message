@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feelings App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h3>💖 Recipient Name</h3>
+    <input type="text" id="name" placeholder="Enter Name">
+
+    <h3>💌 Your Heartfelt Message</h3>
+    <textarea id="msg" placeholder="Write your message..."></textarea>
+
+    <button onclick="generateLink()">✨ Generate Magic Link</button>
+    <p id="output"></p>
+  </div>
+
+  <script>
+    function generateLink() {
+      let name = document.getElementById("name").value.trim();
+      let msg = document.getElementById("msg").value.trim();
+
+      if (!name || !msg) {
+        alert("Please enter both name and message!");
+        return;
+      }
+
+      let url = window.location.origin + "/view.html?name=" 
+                + encodeURIComponent(name) 
+                + "&msg=" 
+                + encodeURIComponent(msg);
+
+      document.getElementById("output").innerHTML =
+        "👉 <a href='" + url + "' target='_blank'>" + url + "</a>";
+    }
+  </script>
+</body>
+</html>
